@@ -5,7 +5,6 @@ import "./styles.css";
 
 class App extends React.Component {
   render() {
-    const { grid } = this.state;
     return (
       <div className="App">
         <MainGrid />
