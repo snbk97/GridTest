@@ -3,11 +3,16 @@ import _uniqueId from "lodash/uniqueId";
 
 import style from "./styles.module.css";
 
+const MyComp = (props) => {
+  const { onClick, data } = props;
+  return (
+    <div className={style.myComp} onClick={onClick}>
+      {data}
+    </div>
+  );
+};
+
 const MainGridComp = (props, ref) => {
-  const initState = [
-    [1, 2, 3],
-    [4, 5, 6]
-  ];
   const [grid, setGrid] = useState([]);
 
   // eslint-disable-next-line no-unused-vars
@@ -17,7 +22,7 @@ const MainGridComp = (props, ref) => {
   // }, [grid]);
 
   const addRow = () => {
-    let len = grid[0]?.length || 3;
+    let len = grid[0]?.length || 1;
     const newRow = [];
     while (len--) newRow.push(_uniqueId("g-"));
     const newGrid = [...grid, newRow];
@@ -40,25 +45,40 @@ const MainGridComp = (props, ref) => {
     addCol();
   };
 
-  useImperativeHandle(ref, () => ({
-    hello: () => {
-      console.log("Hello");
-    }
-  }));
+  // useImperativeHandle(ref, () => ({
+  //   hello: () => {
+  //     console.log("Hello");
+  //   },
+  // }));
+
+  const gridClick = (data) => {
+    console.log(":::data", data);
+  };
 
   return (
     <>
-      <table className={style.table}>
-        {grid.map((row) => (
-          <tr className={style.tableRow}>
-            {row.map((col) => (
-              <td className={style.tableData}>{col}</td>
-            ))}
-          </tr>
-        ))}
-      </table>
       <button onClick={handleAddRow}>add row</button>
       <button onClick={handleAddCol}>add col</button>
+      <table className={style.table}>
+        <tbody>
+          {grid.map((row, id) => (
+            <tr key={`${id}`} className={style.tableRow}>
+              {row.map((col) => (
+                <td
+                  key={`${id}-${col}`}
+                  data-id={col}
+                  className={style.tableData}
+                >
+                  <MyComp
+                    data={col}
+                    onClick={() => gridClick(`${id}-${col}`)}
+                  />
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   );
 };

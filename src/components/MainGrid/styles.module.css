@@ -7,6 +7,14 @@
 }
 
 .tableData {
-  width: 100px;
+  width: 200px;
   height: 100px;
+}
+
+.myComp {
+  background-color: rgb(230, 35, 35);
+  height: inherit;
+  align-items: center;
+  text-align: center;
+  line-height: 85px;
 }
