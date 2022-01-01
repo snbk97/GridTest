@@ -1,0 +1,12 @@
+.table {
+  border: 1px solid #eee;
+}
+
+.tableRow {
+  background-color: #eee;
+}
+
+.tableData {
+  width: 100px;
+  height: 100px;
+}
