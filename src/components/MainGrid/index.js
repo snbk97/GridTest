@@ -70,7 +70,7 @@ const MainGridComp = (props, ref) => {
 
     for (let house of houses) {
       const q = [];
-      const dist = 0;
+      let dist = 0;
       const visited = new Set();
       q.push(house);
       while (q.length > 0) {
