@@ -11,10 +11,26 @@
   height: 100px;
 }
 
+.reset {
+  color: blue;
+  /* background-color: aqua; */
+  border: 1px solid #eee;
+  border-radius: 5px;
+  /* width: max-content; */
+  line-height: 1px;
+  padding: 0.5em;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+
 .myComp {
-  background-color: rgb(230, 35, 35);
+  /* background-color: rgb(230, 35, 35); */
   height: inherit;
   align-items: center;
   text-align: center;
   line-height: 85px;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
 }
