@@ -74,7 +74,7 @@ const MainGridComp = (props, ref) => {
       const visited = new Set();
       q.push(house);
       while (q.length > 0) {
-        const l = q.length;
+        let l = q.length;
         while (l--) {
           const temp = q.shift();
           visited.add(temp.toString());
@@ -87,7 +87,7 @@ const MainGridComp = (props, ref) => {
             const newY = y + dy;
             if (newX >= 0 && newX < cols && newY >= 0 && newY < rows && !visited.has([newX, newY].toString())) {
               // visited.add(house.toString());
-              console.log({ temp: temp.toString(), new: [newX, newY].toString() });
+              // console.log({ temp: temp.toString(), new: [newX, newY].toString() });
               q.push([newX, newY]);
             }
           }
